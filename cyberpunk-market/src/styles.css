@@ -20,19 +20,6 @@ body {
     flex-direction: column;
 }
 
-#hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-#hero img {
-    scale: 0.9;
-    margin-bottom: -50px;
-    margin-top: -60px;
-}
-
 @media (max-width: 1000px) {
     body {
         background-image: url('./assets/images/bg.png');
@@ -63,10 +50,4 @@ body {
     #details-img {
         scale: 0.6;
     }
-}
-
-#hero p {
-    font-size: 36px;
-    color: #ffffff;
-    text-shadow: 2px 2px 2px rgb(0, 0, 0), 0 0 1.6em rgb(199, 47, 230), 0 0 0.4em rgb(222, 21, 236);
 }
