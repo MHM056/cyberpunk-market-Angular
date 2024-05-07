@@ -1,0 +1,40 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 3em;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo {
+    width: 120px;
+}
+
+nav a {
+    font-size: 1.3rem;
+    padding: 45px 40px;
+    text-decoration: none;
+    color: rgb(0, 221, 250);
+    text-shadow: 2px 2px black;
+    background-image: url('../../../assets/images/button-img.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+}
+
+nav a:hover {
+    font-size: 1.5rem;
+    color: #f033d7;
+    transition: all 0.8s ease;
+    text-decoration-skip-ink: auto;
+    text-decoration: underline;
+}
