@@ -20,7 +20,7 @@
   text-shadow: 2px 2px black;
 }
 
-.form input{
+.form input {
   border-radius: 10px;
   outline: 0;
   background: #ffffff;
@@ -32,6 +32,7 @@
   box-sizing: border-box;
   font-size: 14px;
 }
+
 .form textarea {
   background: #ffffff;
   border-radius: 10px;
@@ -43,6 +44,7 @@
   margin-bottom: 10px;
 
 }
+
 .form button {
   font-family: 'Alkalami', serif;
   font-family: 'Kaushan Script', cursive;
@@ -57,8 +59,9 @@
   cursor: pointer;
   border-radius: 5px;
   margin-bottom: 15px;
-  
+
 }
+
 .form button:hover,
 .form button:active,
 .form button:focus {
@@ -71,6 +74,7 @@
   max-width: 300px;
   margin: 0 auto;
 }
+
 .container:before,
 .container:after {
   content: "";
@@ -83,31 +87,36 @@
   color: #6b6767;
   font-size: 17px;
 }
+
 .form .message a {
   color: #ffffff;
   text-decoration: none;
   font-size: 18px;
 
 }
-#search{
+
+#search {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#search .form h2{
-margin-top:-40px;
-margin-bottom: 0px;
+
+#search .form h2 {
+  margin-top: -40px;
+  margin-bottom: 0px;
   font-size: 30px;
   color: rgb(204, 7, 7);
   background-color: black;
   padding-bottom: 20px;
   letter-spacing: 1px;
 }
-.search-result > .car {
+
+.search-result>.car {
   scale: 0.67;
   margin-top: -50px;
 }
+
 .search-result {
   display: flex;
 }
@@ -116,6 +125,7 @@ margin-bottom: 0px;
   margin-top: 8rem;
   font-size: 30px;
 }
+
 h4 {
   font-size: 33px;
   background-color: rgba(34, 32, 32, 0.601);
@@ -124,13 +134,13 @@ h4 {
   margin-top: -5px;
 }
 
-#result-heading{
-/* background-color: black; */
-padding: 20px 40px;
-font-size: 40px;
+#result-heading {
+  /* background-color: black; */
+  padding: 20px 40px;
+  font-size: 40px;
 }
 
-.form .search-form{
+.form .search-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,7 +153,7 @@ font-size: 40px;
   width: 70vw;
   height: 20vh;
   margin-top: -10px;
-  
+
 }
 
 .form-item {
@@ -151,6 +161,7 @@ font-size: 40px;
   margin-top: -120px;
 }
 
-#create, #edit {
+#create,
+#edit {
   height: 100vh;
 }
