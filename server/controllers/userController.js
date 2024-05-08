@@ -20,11 +20,11 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const email = 'johnny@gmail.com',
-        password = '123';
+    const { email, password } = req.body;
 
     try {
         const token = await userService.login(email, password);
+        console.log(token);
         res.cookie(TOKEN_KEY, token);
         res.status(200).json({ token });
     } catch (error) {
