@@ -24,9 +24,14 @@ router.post('/login', async (req, res) => {
 
     try {
         const token = await userService.login(email, password);
-        console.log(token);
-        res.cookie(TOKEN_KEY, token);
-        res.status(200).json({ token });
+
+        res.cookie(TOKEN_KEY, token, {
+            secure: true,
+            httpOnly: true,
+            expires: new Date(Date.now() + 99 * 99 * 60000)
+        });
+        
+        res.status(200).json(token);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

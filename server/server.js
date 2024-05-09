@@ -12,7 +12,10 @@ mongoose.connect(DB_URL)
 
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
-server.use(cors());
+server.use(cors({
+    origin: "http://localhost:4200",
+    credentials: true,
+  }));
 server.use(cookieParser());
 server.use(routes);
 
