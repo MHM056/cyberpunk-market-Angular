@@ -10,6 +10,10 @@ exports.register = async (userData) => {
         throw new Error('Username already exists!');
     }
 
+    if (userData.password !== userData.repeatPassword) {
+        throw new Error('Password missmatch!');
+    }
+
     return User.create(userData);
 }
 

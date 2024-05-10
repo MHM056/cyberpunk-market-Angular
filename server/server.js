@@ -7,15 +7,15 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 mongoose.connect(DB_URL)
-    .then(() => console.log(`Successfully connected to DB!`))
-    .catch(err => console.log(`DB connection failed!`, err.message));
+  .then(() => console.log(`Successfully connected to DB!`))
+  .catch(err => console.log(`DB connection failed!`, err.message));
 
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 server.use(cors({
-    origin: "http://localhost:4200",
-    credentials: true,
-  }));
+  origin: "http://localhost:4200",
+  credentials: true,
+}));
 server.use(cookieParser());
 server.use(routes);
 
