@@ -30,7 +30,7 @@ router.post('/login', async (req, res) => {
             httpOnly: true,
             expires: new Date(Date.now() + 99 * 99 * 60000)
         });
-        
+
         res.status(200).json(token);
     } catch (error) {
         res.status(400).json({ error: error.message });
