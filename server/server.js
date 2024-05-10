@@ -1,6 +1,6 @@
 const express = require('express');
 const server = express();
-const { PORT, DB_URL } = require('./constants');
+const { PORT, DB_URL, corsOptions } = require('./constants');
 const routes = require('./router');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -12,10 +12,7 @@ mongoose.connect(DB_URL)
 
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
-server.use(cors({
-  origin: "http://localhost:4200",
-  credentials: true,
-}));
+server.use(cors(corsOptions));
 server.use(cookieParser());
 server.use(routes);
 

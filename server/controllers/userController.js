@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { TOKEN_KEY } = require('../constants');
+const { TOKEN_KEY, cookieOptions } = require('../constants');
 const userService = require('../services/userService');
 
 router.post('/register', async (req, res) => {
@@ -29,7 +29,7 @@ router.post('/login', async (req, res) => {
         const userData = await userService.login(email, password);
         const { user, token } = userData;
 
-        res.cookie(TOKEN_KEY, token, { httpOnly: true, sameSite: 'none', secure: true });
+        res.cookie(TOKEN_KEY, token, cookieOptions);
 
         res.status(200).send(user);
     } catch (error) {
