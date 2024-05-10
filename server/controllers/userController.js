@@ -23,15 +23,12 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const token = await userService.login(email, password);
+        const userData = await userService.login(email, password);
+        const { user, token } = userData;
 
-        res.cookie(TOKEN_KEY, token, {
-            secure: true,
-            httpOnly: true,
-            expires: new Date(Date.now() + 99 * 99 * 60000)
-        });
+        res.cookie(TOKEN_KEY, token, { httpOnly: true, sameSite: 'none', secure: true });
 
-        res.status(200).json(token);
+        res.status(200).send(user);
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
