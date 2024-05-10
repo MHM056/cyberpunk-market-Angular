@@ -7,13 +7,13 @@
         </div>
 
         <!-- Logged-in users -->
-        <div *ngIf="!isLogged" class="user">
+        <div *ngIf="isLogged" class="user">
             <a routerLink="/...">Sell</a>
-            <a routerLink="/user/logout">Logout</a>
+            <a routerLink="/user/logout" (click)="logout()">Logout</a>
         </div>
 
         <!-- Guest users -->
-        <div *ngIf="isLogged" class="guest">
+        <div *ngIf="!isLogged" class="guest">
             <a routerLink="/user/login">Login</a>
             <a routerLink="/user/register">Register</a>
         </div>

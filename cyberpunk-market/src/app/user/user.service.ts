@@ -7,7 +7,7 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private user$$ = new BehaviorSubject<any | undefined >(undefined);
+  private user$$ = new BehaviorSubject<any | undefined>(undefined);
   private user$ = this.user$$.asObservable();
 
   get isUserLogged(): boolean {
@@ -21,11 +21,27 @@ export class UserService {
 
   constructor(private http: HttpClient) {
     this.userSubscription = this.user$.subscribe(user => this.user = user);
-   }
+  }
+
+  register(email: string, password: string, created_at: string, repeatPassword: string) {
+    return this.http
+      .post(`${this.apiUrl}/users/register`, {
+        email,
+        password,
+        created_at,
+        repeatPassword
+      })
+      .pipe(tap(user => this.user$$.next(user)));
+  }
 
   login(email: string, password: string) {
     return this.http
       .post(`${this.apiUrl}/users/login`, { email, password }, { withCredentials: true })
       .pipe(tap((user) => this.user$$.next(user)));
+  }
+
+  logout() {
+    return this.http.post(`${this.apiUrl}/users/logout`, {}, { withCredentials: true })
+      .pipe(tap(() => this.user$$.next(undefined)));
   }
 }
