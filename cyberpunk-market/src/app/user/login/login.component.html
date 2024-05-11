@@ -2,9 +2,33 @@
     <div class="form">
         <h2>Login</h2>
         <form #form="ngForm" (ngSubmit)="login(form)" class="login-form">
-            <input type="text" name="email" id="email" placeholder="email"  ngModel #inputEmail="ngModel"/>
-            <input type="password" name="password" id="password" placeholder="password" ngModel #inputPassword="ngModel" />
-            <button type="submit">login</button>
+            <ng-container *ngIf="inputEmail.touched">
+                <p *ngIf="inputEmail.errors?.['required']" class="error">Email is required!</p>
+                <!-- <p *ngIf="inputEmail.errors?.['required']" class="error">Email is not valid!</p> -->
+            </ng-container>
+            <input type="text" 
+            name="email" 
+            id="email" 
+            placeholder="email" 
+            ngModel 
+            #inputEmail="ngModel"
+            required
+            />
+
+            <ng-container *ngIf="inputPassword.touched">
+                <p *ngIf="inputPassword.errors?.['required']" class="error">Password is required!</p>
+                <p *ngIf="inputPassword.errors?.['minlength']" class="error">Password is too short!</p>
+            </ng-container>
+            <input type="password" 
+            name="password" 
+            id="password" 
+            placeholder="password" 
+            ngModel 
+            #inputPassword="ngModel"
+            required
+            minlength="4" 
+            />
+            <button type="submit" [disabled]="form.invalid">login</button>
             <p class="message">
                 Not registered? <a routerLink="/user/register">Create an account</a>
             </p>
