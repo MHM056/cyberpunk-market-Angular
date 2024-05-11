@@ -1,3 +1,15 @@
+@keyframes blink {
+    to { color: rgb(0, 221, 250); }
+    }
+    
+    footer p {
+    color: white;
+    margin-top: -1px;
+    animation: blink 2s steps(2, start) infinite;
+    animation-timing-function: ease-in-out;
+    letter-spacing: 3px;
+}
+
 footer {
     text-align: center;
     position: fixed;
@@ -7,9 +19,4 @@ footer {
     height: 20px;
     padding: 7px;
     background-color: black;
-}
-
-footer p {
-    margin-top: -1px;
-    color: white;
 }

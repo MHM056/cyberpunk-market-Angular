@@ -4,7 +4,7 @@
         <form #form="ngForm" (ngSubmit)="login(form)" class="login-form">
             <ng-container *ngIf="inputEmail.touched">
                 <p *ngIf="inputEmail.errors?.['required']" class="error">Email is required!</p>
-                <!-- <p *ngIf="inputEmail.errors?.['required']" class="error">Email is not valid!</p> -->
+                <p *ngIf="inputEmail.errors?.['emailValidator']" class="error">Email is not valid!</p>
             </ng-container>
             <input type="text" 
             name="email" 
@@ -13,7 +13,7 @@
             ngModel 
             #inputEmail="ngModel"
             required
-            />
+            [appEmail]="domains">
 
             <ng-container *ngIf="inputPassword.touched">
                 <p *ngIf="inputPassword.errors?.['required']" class="error">Password is required!</p>

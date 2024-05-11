@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { EMAIL_DOMAINS } from 'src/app/constants';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
   constructor(private userService: UserService, private route: Router) { }
+
+  domains: string[] = EMAIL_DOMAINS;
 
   login(form: NgForm) {
     if (form.invalid) {
