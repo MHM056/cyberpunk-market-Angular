@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { EMAIL_DOMAINS } from 'src/app/constants';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { EMAIL_DOMAINS } from 'src/app/constants';
 })
 
 export class LoginComponent {
-  constructor(private userService: UserService, private route: Router) { }
+  constructor(private userService: UserService, private route: Router, private notification: NotificationService) { }
 
   domains: string[] = EMAIL_DOMAINS;
 
@@ -23,7 +24,7 @@ export class LoginComponent {
     const { email, password } = form.value;
     this.userService.login(email, password).subscribe(
       () => this.route.navigate(['/home']),
-      err => {console.log(err.error.error)}
+      err => this.notification.setErrorMessage(err.error.error)
     );
   }
 }

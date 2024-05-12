@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private notification: NotificationService
+  ) {}
 
   get isLogged(): boolean {
     return this.userService.isUserLogged;

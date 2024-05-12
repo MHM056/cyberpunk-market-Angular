@@ -1,5 +1,5 @@
-<section id="notifications">
+<section  id="notifications">
     <div id="errorBox" class="notification">
-        <span class="msg">MESSAGE</span>
+        <span *ngIf="(error | async) as error" class="msg">{{ error }}</span>
     </div>
 </section>
