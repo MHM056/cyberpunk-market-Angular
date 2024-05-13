@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('../lib/jwt');
 const User = require('../models/User');
 const { SECRET } = require('../constants');
+const { validateUserData } = require('../utils/validateUserData');
 
 exports.register = async (userData) => {
     const user = await User.findOne({ email: userData.email });
@@ -29,6 +30,8 @@ exports.login = async (email, password) => {
     if(!isValid) {
         throw new Error('Cannot find email or password!');
     }
+
+    validateUserData(email, password);
     
     const payload = {
         _id: user._id,

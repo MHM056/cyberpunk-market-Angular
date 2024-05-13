@@ -9,7 +9,7 @@ import { NotificationService } from './notification.service';
 export class NotificationComponent {
   constructor(private service: NotificationService) { }
 
-  error: any = this.service.errorMessageAction$;
+  error = this.service.errorMessageAction$;
 
   closeNotification(): void {
     this.service.clearErrorMessage();
