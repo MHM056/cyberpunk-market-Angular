@@ -15,6 +15,8 @@ exports.register = async (userData) => {
         throw new Error('Password missmatch!');
     }
 
+    validateUserData(email, password);
+    
     return User.create(userData);
 }
 
@@ -31,8 +33,6 @@ exports.login = async (email, password) => {
         throw new Error('Cannot find email or password!');
     }
 
-    validateUserData(email, password);
-    
     const payload = {
         _id: user._id,
         email: user.email,
