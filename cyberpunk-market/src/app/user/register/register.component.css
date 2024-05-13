@@ -1,0 +1,10 @@
+p.error {
+    margin-bottom: 0;
+    padding: 0;
+    color: red;
+    /* color: rgb(0, 221, 250); */
+    font-size: 20px;
+    text-align: left;
+    text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;
+    letter-spacing: 4px;
+}

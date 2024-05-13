@@ -12,7 +12,11 @@ import { NotificationService } from 'src/app/shared/notification/notification.se
 })
 
 export class LoginComponent {
-  constructor(private userService: UserService, private route: Router, private notification: NotificationService) { }
+  constructor(
+    private userService: UserService, 
+    private route: Router, 
+    private notificationService: NotificationService
+  ) { }
 
   domains: string[] = EMAIL_DOMAINS;
 
@@ -24,7 +28,7 @@ export class LoginComponent {
     const { email, password } = form.value;
     this.userService.login(email, password).subscribe(
       () => this.route.navigate(['/home']),
-      err => this.notification.setErrorMessage(err.error.error)
+      err => this.notificationService.setErrorMessage(err.error.error)
     );
   }
 }
