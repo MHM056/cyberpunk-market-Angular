@@ -13,6 +13,8 @@
     color: #ffffff;
     /* display: none; */
     text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .notification>span {
@@ -21,6 +23,23 @@
     border-radius: 2px;
 }
 
+.notification:hover span {
+    color: rgb(0, 221, 250);
+    transition: 0.3s ease-in-out;
+}
+
 #errorBox>span {
     background: rgb(199, 9, 216);
+}
+
+.close {
+    position: absolute;
+    padding: 0 0.2em 0 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.close:hover {
+    color: rgb(0, 221, 250);
+    transition: 0.3s ease-in-out;
 }

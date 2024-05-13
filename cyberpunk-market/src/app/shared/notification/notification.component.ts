@@ -1,4 +1,4 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NotificationService } from './notification.service';
 
 @Component({
@@ -6,15 +6,12 @@ import { NotificationService } from './notification.service';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements AfterContentInit {
+export class NotificationComponent {
   constructor(private service: NotificationService) { }
 
   error: any = this.service.errorMessageAction$;
 
-  ngAfterContentInit(): void {
-    setTimeout(() => {
-      this.service.clearErrorMessage();
-      this.error = this.service.errorMessageAction$;
-    }, 7000);
+  closeNotification(): void {
+    this.service.clearErrorMessage();
   }
 }

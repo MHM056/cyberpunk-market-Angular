@@ -1,5 +1,6 @@
 <section  id="notifications" >
-    <div id="errorBox" class="notification">
-        <span *ngIf="(error | async) as error" class="msg">{{ error }}</span>
+    <div *ngIf="(error | async) as error" id="errorBox" class="notification">
+        <div class="close" (click)="closeNotification()">X</div>
+        <span class="msg">{{ error }}</span>
     </div>
 </section>
