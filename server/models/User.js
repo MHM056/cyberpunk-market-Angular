@@ -8,9 +8,9 @@ const userSchema = new mongoose.Schema({
         unique: true,
         validate: {
             validator: function (v) {
-                return /[a-zA-Z0-9]+/g.test(v);
+                return /[A-Za-z0-9.]{6,}.@gmail.(bg|com)/g.test(v);
             },
-            message: props => `${props.value} must contain latin letters and digits only!`
+            message: props => `${props.value} is invalid. Email must contain latin letters and digits only!`
         },
     },
     password: {

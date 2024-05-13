@@ -5,7 +5,6 @@ exports.validateUserData = (email, password) => {
     const emailRegExp = new RegExp(`[A-Za-z0-9.]{6,}.@gmail.(${domainString})`);
     const passwordRegExp = new RegExp(`[a-zA-Z0-9]`);
 
-
     if (email === '' || !emailRegExp.test(email)) {
         throw new Error('Invalid email!');
     }
@@ -17,4 +16,6 @@ exports.validateUserData = (email, password) => {
     if (!passwordRegExp.test(password)) {
         throw new Error('Password must contain letters and digits only!');
     }
+
+    return true;
 }

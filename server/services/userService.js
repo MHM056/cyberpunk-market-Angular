@@ -15,9 +15,10 @@ exports.register = async (userData) => {
         throw new Error('Password missmatch!');
     }
 
-    validateUserData(email, password);
+    // if(validateUserData(email, password)){
+        return User.create(userData);
+    // }
     
-    return User.create(userData);
 }
 
 exports.login = async (email, password) => {

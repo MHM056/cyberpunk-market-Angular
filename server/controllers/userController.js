@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
             _id: user._id
         });
     } catch (error) {
-        res.status(400).send({ error: error.message });
+        res.status(400).send(error.message);
     }
 });
 
