@@ -7,7 +7,6 @@ router.post('/register', async (req, res) => {
     const userData = {
         email,
         password,
-        created_at: new Date(),
         repeatPassword,
     }
 
