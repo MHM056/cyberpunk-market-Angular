@@ -1,30 +1,30 @@
 <section id="register">
     <div class="form">
         <h2>Register</h2>
-        <form #form="ngForm" (ngSubmit)="register(form)" class="register-form">
-            <input type="text" 
-            name="email" 
-            id="register-email" 
-            placeholder="email"
-            ngModel
-            required
-            #inputEmail="ngModel" />
+        <form [formGroup]="form" (ngSubmit)="register()" class="register-form">
 
-            <input type="password" 
-            name="password" 
-            id="register-password" 
-            placeholder="password"
-            ngModel
-            required
-            #inputPassword="ngModel" />
+            <input type="text" name="email" id="register-email" placeholder="email" ngModel required
+                formControlName="email" />
 
-            <input type="password" 
-            name="repeatPassword" 
-            id="repeat-password" 
-            placeholder="repeat password"
-            ngModel
-            required
-            #inputRepeatPassword="ngModel" />
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                <p class="error" *ngIf="form.get('email')?.errors?.['emailValidator']">Email is not valid!</p>
+            </ng-container>
+
+            <ng-container formGroupName="passGroup">
+                <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+                    <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                    <p class="error" *ngIf="form.get('password')?.errors?.['minlength']">Password is too short!</p>
+                </ng-container>
+                <input type="password" name="password" id="register-password" placeholder="password" ngModel required
+                    minlength="4" formControlName="password" />
+
+                <ng-container *ngIf="form.get('passGroup')?.get('repeatPassword)?.touched">
+                    <p class="error" *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']">Passwords are not matching!</p>
+                </ng-container>
+                <input type="password" name="repeatPassword" id="repeat-password" placeholder="repeat password" ngModel
+                    required formControlName="repeatPassword" />
+            </ng-container>
 
             <button type="submit" [disabled]="form.invalid">register</button>
             <p class="message">Already registered? <a routerLink="/user/login">Login</a></p>
