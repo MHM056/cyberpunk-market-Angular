@@ -8,7 +8,7 @@ exports.register = async (userData) => {
     const user = await User.findOne({ email: userData.email });
 
     if (user) {
-        throw new Error('Username already exists!');
+        throw new Error('Email is already in use!');
     }
 
     if (userData.password !== userData.repeatPassword) {

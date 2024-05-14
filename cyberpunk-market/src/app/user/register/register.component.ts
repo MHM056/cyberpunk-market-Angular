@@ -42,7 +42,7 @@ export class RegisterComponent {
 
     this.userService.register(email!, password!, repeatPassword!).subscribe(
       () => this.router.navigate(['/home']),
-      err => this.notificationService.setErrorMessage(err.error.message)
+      err => this.notificationService.setErrorMessage(err.error)
     );
   }
 }
