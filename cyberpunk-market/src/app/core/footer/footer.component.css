@@ -8,6 +8,7 @@
     animation: blink 2s steps(2, start) infinite;
     animation-timing-function: ease-in-out;
     letter-spacing: 3px;
+    text-shadow: 1px 1px 2px rgb(179, 0, 255), 0 0 1em rgb(179, 0, 255), 0 0 0.2em rgb(179, 0, 255);
 }
 
 footer {
