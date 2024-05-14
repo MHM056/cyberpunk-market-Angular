@@ -23,12 +23,11 @@ export class UserService {
     this.userSubscription = this.user$.subscribe(user => this.user = user);
   }
 
-  register(email: string, password: string, created_at: string, repeatPassword: string) {
+  register(email: string, password: string, repeatPassword: string) {
     return this.http
       .post(`${this.apiUrl}/users/register`, {
         email,
         password,
-        created_at,
         repeatPassword
       })
       .pipe(tap(user => this.user$$.next(user)));
