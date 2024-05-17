@@ -1,0 +1,85 @@
+@keyframes spinny {
+    0% {
+        transform-origin: 50%;
+        transform: translate3d(-50%, -50%, 0) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translate3d(-50%, -50%, 0) rotateZ(360deg);
+    }
+}
+
+.spinny-loader {
+    display: block;
+    position:relative;
+    float: center;
+    height:140px;
+    margin:0 10px;
+}
+
+.spinny-loader > div {
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:block;
+    width:60px;
+    height:60px;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius:200px;
+    background-color:rgb(0, 221, 250);
+}
+
+.spinny-loader::before, .spinny-loader::after {
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:block;
+
+    border-radius:200px;
+    border-style:solid;
+    border-width:15px;
+    border-color:rgb(0, 221, 250) transparent rgb(0, 221, 250) transparent;
+
+    animation-name:spinny;
+    animation-duration: 0.6s;
+    animation-iteration-count:infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.spinny-loader::after {
+    width:140px;
+    height:140px;
+    animation-direction: alternate-reverse;
+}
+
+.spinny-loader::before {
+    width:100px;
+    height:100px;
+}
+
+.spinny-loader {
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:99;
+    background-color:transparent;
+    opacity:1;
+}
+
+.spinny-loader.error > div {
+    background-color:#ec5840;
+}
+.spinny-loader.error::before, .spinny-loader.error::after {
+    border-color:#ec5840 transparent #ec5840 transparent;
+    animation-timing-function: linear;
+}
+.spinny-loader.error::before {
+    animation-duration: 2.5s;
+}
+.spinny-loader.error::after {
+    animation-duration: 3.8s;
+    animation-direction: reverse;
+}
