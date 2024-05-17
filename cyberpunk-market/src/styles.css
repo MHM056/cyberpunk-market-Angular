@@ -25,7 +25,8 @@ body {
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .form {
-    background-color: #c257b4cf;
+    background-color: rgba(0, 221, 250, 0.614);
+    /* background-color: #c257b4cf; */
     max-width: 440px;
     margin: auto;
     padding: 35px;
@@ -38,7 +39,7 @@ body {
 .form h2 {
     margin-bottom: 50px;
     font-size: 36px;
-    color: rgb(0, 221, 250);
+    color: rgb(2, 98, 111);
     letter-spacing: 5px;
     text-shadow: 2px 2px black;
 }
@@ -73,7 +74,8 @@ body {
     font-family: 'Kaushan Script', cursive;
     text-transform: uppercase;
     outline: 0;
-    background: rgba(43, 180, 180, 0.86);
+    /* background: rgba(43, 180, 180, 0.86); */
+    background: rgb(0, 64, 103);
     width: 80%;
     border: 0;
     padding: 15px;
@@ -88,7 +90,9 @@ body {
 .form button:hover,
 .form button:active,
 .form button:focus {
-    background: #5a027a;
+    /* background: #5a027a; */
+    /* background: rgb(0, 64, 103); */
+    background: rgba(104, 107, 107, 0.86);
 }
 
 .container {
