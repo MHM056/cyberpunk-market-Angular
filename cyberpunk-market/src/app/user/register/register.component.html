@@ -1,7 +1,7 @@
 <section id="register">
     <app-notification />
-    <app-loader />
-    <div class="form">
+    <app-loader *ngIf="isLoading" />
+    <div *ngIf="!isLoading" class="form">
         <h2>Register</h2>
         <form [formGroup]="form" (ngSubmit)="register()" class="register-form">
 

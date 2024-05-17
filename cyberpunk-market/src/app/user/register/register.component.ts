@@ -32,18 +32,20 @@ export class RegisterComponent {
   });
 
   domains: string[] = EMAIL_DOMAINS;
+  isLoading: boolean = false;
 
   register() {
     if (this.form.invalid) {
       return;
     }
-
+    this.isLoading = true;
     const { email, passGroup: { password, repeatPassword } = {} } = this.form.value;
 
     this.userService.register(email!, password!, repeatPassword!).subscribe(
       () => this.router.navigate(['/home']),
       err => {
-        if(err.statusText === "Unknown Error") {
+        this.isLoading = false;
+        if (err.statusText === "Unknown Error") {
           this.notificationService.setErrorMessage(`${err.statusText}, please try again later`);
         } else {
           this.notificationService.setErrorMessage(err.error)
