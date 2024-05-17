@@ -92,13 +92,14 @@ h2 {
 }
 
 .heading {
-    color: rgb(5, 171, 232);
-    text-shadow: 3px 3px rgb(238, 0, 143);
+    color: rgb(2, 98, 111);
+    /* color: rgb(0, 221, 250); */
+    text-shadow: 3px 3px black;
     width: 30vw;
     text-align: center;
     font-size: 42px;
     letter-spacing: 8px;
-    background-color: rgba(255, 255, 255, 0.866);
+    background-color: rgba(0, 221, 250, 0.614);
     clip-path: polygon(7% 0, 100% 0, 100% 20%, 100% 59%, 93% 100%, 20% 100%, 0 100%, 0 43%);
     margin-left: 33vw;
     margin-bottom: 50px;
