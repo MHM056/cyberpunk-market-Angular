@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} must contain latin letters and digits only!`
         },
     },
+    items: [{
+        type: ObjectId,
+        ref: "Item"
+    }]
 }, { timestamps: { createdAt: 'created_at' } });
 
 userSchema.virtual('repeatPassword').set(function (value) {

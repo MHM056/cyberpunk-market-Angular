@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { UserForAuth } from '../types/User';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class UserService {
 
   register(email: string, password: string, repeatPassword: string) {
     return this.http
-      .post(`${this.apiUrl}/users/register`, {
+      .post<UserForAuth>(`${this.apiUrl}/users/register`, {
         email,
         password,
         repeatPassword
@@ -35,7 +36,7 @@ export class UserService {
 
   login(email: string, password: string) {
     return this.http
-      .post(`${this.apiUrl}/users/login`, { email, password }, { withCredentials: true })
+      .post<UserForAuth>(`${this.apiUrl}/users/login`, { email, password }, { withCredentials: true })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
