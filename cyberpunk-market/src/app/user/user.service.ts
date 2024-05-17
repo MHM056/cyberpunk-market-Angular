@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { UserForAuth } from '../types/User';
+import { BehaviorSubject, Subscription, tap} from 'rxjs';
+import { UserForAuth } from '../types/user';
 
 @Injectable({
   providedIn: 'root'

@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
         },
     },
     items: [{
-        type: ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "Item"
     }]
 }, { timestamps: { createdAt: 'created_at' } });
