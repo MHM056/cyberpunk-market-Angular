@@ -13,8 +13,8 @@ import { NotificationService } from 'src/app/shared/notification/notification.se
 
 export class LoginComponent {
   constructor(
-    private userService: UserService, 
-    private route: Router, 
+    private userService: UserService,
+    private route: Router,
     private notificationService: NotificationService
   ) { }
 
@@ -33,7 +33,11 @@ export class LoginComponent {
       () => this.route.navigate(['/home']),
       err => {
         this.isLoading = false;
-        this.notificationService.setErrorMessage(err.error.error)
+        if (err.statusText === "Unknown Error") {
+          this.notificationService.setErrorMessage(`${err.statusText}, please try again later`)
+        } else {
+          this.notificationService.setErrorMessage(err.error);
+        }
       }
     );
   }
