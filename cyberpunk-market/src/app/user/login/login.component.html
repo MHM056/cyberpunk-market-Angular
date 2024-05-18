@@ -1,6 +1,7 @@
 <section id="login">
     <app-notification />
-    <div class="form">
+    <app-loader *ngIf="isLoading"/>
+    <div class="form" *ngIf="!isLoading">
         <h2>Login</h2>
         <form #form="ngForm" (ngSubmit)="login(form)" class="login-form">
             <ng-container *ngIf="inputEmail.touched">

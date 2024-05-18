@@ -19,16 +19,22 @@ export class LoginComponent {
   ) { }
 
   domains: string[] = EMAIL_DOMAINS;
+  isLoading: boolean = false;
 
   login(form: NgForm) {
     if (form.invalid) {
       return;
     }
 
+    this.isLoading = true;
+
     const { email, password } = form.value;
     this.userService.login(email, password).subscribe(
       () => this.route.navigate(['/home']),
-      err => this.notificationService.setErrorMessage(err.error.error)
+      err => {
+        this.isLoading = false;
+        this.notificationService.setErrorMessage(err.error.error)
+      }
     );
   }
 }
