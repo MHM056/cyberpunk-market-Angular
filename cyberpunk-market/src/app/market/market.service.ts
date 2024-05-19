@@ -12,6 +12,6 @@ export class MarketService {
   apiUrl = environment.apiUrl;
 
   getItems() {
-    return this.http.get<Item>(`${this.apiUrl}/market/items`);
+    return this.http.get<Item[]>(`${this.apiUrl}/market/items`);
   }
 }

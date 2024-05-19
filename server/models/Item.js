@@ -40,7 +40,7 @@ const ItemSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }
-}, { timestamps: { createdAt: created_at } });
+}, { timestamps: { createdAt: 'created_at' } });
 
 const Item = mongoose.model('Item', ItemSchema);
 
