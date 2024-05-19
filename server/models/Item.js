@@ -35,8 +35,12 @@ const ItemSchema = new mongoose.Schema({
         required: [true, 'Description is required!'],
         minLength: [10, 'Description should be atleast 10 characters long'],
         maxLength: [200, 'Description should be no longer than 200 characters']
+    },
+    userId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
     }
-});
+}, { timestamps: { createdAt: created_at } });
 
 const Item = mongoose.model('Item', ItemSchema);
 
