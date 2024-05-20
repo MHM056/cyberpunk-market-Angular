@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-item',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CreateItemComponent {
 
+
+  handleCreate(form: NgForm) {
+    
+  }
 }
