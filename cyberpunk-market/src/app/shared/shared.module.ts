@@ -10,7 +10,7 @@ import { LoaderComponent } from './loader/loader.component';
   declarations: [
     EmailDirective,
     NotificationComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     CommonModule

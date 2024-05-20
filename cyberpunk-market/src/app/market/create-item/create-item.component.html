@@ -14,10 +14,10 @@
 
             <ng-container *ngIf="inputImageUrl.touched">
                 <p *ngIf="inputImageUrl.errors?.['required']" class="error">Image URL is required!</p>
-                <p *ngIf="inputImageUrl.errors?.['urlValidator']" class="error">Invalid URL!</p>
+                <p *ngIf="inputImageUrl?.errors?.['urlValidator']" class="error">Invalid URL!</p>
             </ng-container>
             <input type="text" name="imageUrl" id="item-image" placeholder="Your item Image URL" ngModel
-                #inputImageUrl="ngModel" required />
+                #inputImageUrl="ngModel" appUrl required />
 
             <ng-container *ngIf="inputPrice.touched">
                 <p *ngIf="inputPrice.errors?.['required']" class="error">Price is required!</p>
@@ -44,7 +44,7 @@
                 <p *ngIf="inputDescription.errors?.['maxlength']" class="error">Description should be no longer than 200 characters!</p>
             </ng-container>
             <textarea id="description" name="description" placeholder="More About The Item" rows="10" cols="50" ngModel
-                #inputItem="ngModel" required minlength="10" maxlength="200"></textarea>
+                #inputDescription="ngModel" required minlength="10" maxlength="200"></textarea>
             <button type="submit">Add</button>
         </form>
     </div>
