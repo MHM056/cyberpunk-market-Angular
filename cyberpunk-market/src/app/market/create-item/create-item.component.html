@@ -24,7 +24,7 @@
                 <p *ngIf="inputPrice.errors?.['numberValidator']" class="error">Price must be a positive number!</p>
             </ng-container>
             <input type="text" name="price" id="price" placeholder="Price in Euro" ngModel #inputPrice="ngModel"
-                required />
+                required appNumber />
 
             <ng-container *ngIf="inputAvailability.touched">
                 <p *ngIf="inputAvailability.errors?.['required']" class="error">Availability is required!</p>

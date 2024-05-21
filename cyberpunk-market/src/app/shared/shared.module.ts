@@ -4,6 +4,7 @@ import { EmailDirective } from './validators/email.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { LoaderComponent } from './loader/loader.component';
 import { UrlDirective } from './validators/url.directive';
+import { NumberDirective } from './validators/number.directive';
 
 
 
@@ -13,10 +14,11 @@ import { UrlDirective } from './validators/url.directive';
     EmailDirective,
     NotificationComponent,
     LoaderComponent,
+    NumberDirective,
   ],
   imports: [
     CommonModule
   ],
-  exports: [EmailDirective, UrlDirective, NotificationComponent, LoaderComponent]
+  exports: [EmailDirective, UrlDirective, NumberDirective, NotificationComponent, LoaderComponent]
 })
 export class SharedModule { }
