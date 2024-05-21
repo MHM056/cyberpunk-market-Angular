@@ -45,7 +45,7 @@
             </ng-container>
             <textarea id="description" name="description" placeholder="More About The Item" rows="10" cols="50" ngModel
                 #inputDescription="ngModel" required minlength="10" maxlength="200"></textarea>
-            <button type="submit">Add</button>
+            <button type="submit" [disabled]="form.invalid">Add</button>
         </form>
     </div>
 </section>

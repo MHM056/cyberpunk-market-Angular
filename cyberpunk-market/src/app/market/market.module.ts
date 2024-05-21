@@ -5,6 +5,7 @@ import { MarketRoutingModule } from './market-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CreateItemComponent } from './create-item/create-item.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
-    MarketRoutingModule
+    RouterModule,
+    MarketRoutingModule,
   ]
 })
 export class MarketModule { }
