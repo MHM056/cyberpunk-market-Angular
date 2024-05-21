@@ -14,7 +14,7 @@
 
             <ng-container *ngIf="inputImageUrl.touched">
                 <p *ngIf="inputImageUrl.errors?.['required']" class="error">Image URL is required!</p>
-                <p *ngIf="inputImageUrl?.errors?.['urlValidator']" class="error">Invalid URL!</p>
+                <p *ngIf="inputImageUrl.errors?.['urlValidator']" class="error">Invalid URL!</p>
             </ng-container>
             <input type="text" name="imageUrl" id="item-image" placeholder="Your item Image URL" ngModel
                 #inputImageUrl="ngModel" appUrl required />
