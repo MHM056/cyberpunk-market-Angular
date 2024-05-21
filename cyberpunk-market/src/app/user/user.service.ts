@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { BehaviorSubject, Subscription, tap} from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { UserForAuth } from '../types/user';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class UserService {
         email,
         password,
         repeatPassword
-      })
+      }, { withCredentials: true })
       .pipe(tap(user => this.user$$.next(user)));
   }
 

@@ -42,7 +42,10 @@ export class RegisterComponent {
     const { email, passGroup: { password, repeatPassword } = {} } = this.form.value;
 
     this.userService.register(email!, password!, repeatPassword!).subscribe(
-      () => this.router.navigate(['/home']),
+      () => {
+        this.userService.login(email!, password!).subscribe();
+        this.router.navigate(['/home'])
+      },
       err => {
         this.isLoading = false;
         if (err.statusText === "Unknown Error") {
