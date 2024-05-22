@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class CreateItemComponent {
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private marketService: MarketService,
-    private router: Router, 
+    private router: Router,
     private notification: NotificationService) { }
 
   handleCreate(form: NgForm) {
@@ -24,10 +24,10 @@ export class CreateItemComponent {
 
     const userId = this.userService.user?._id || '';
     if (userId) {
-      const { email, imageUrl, price, availability, type, description } = form.value;
-      this.marketService.createItem(email, imageUrl, price, availability, type, description, userId).subscribe({
+      const { item, imageUrl, price, availability, type, description } = form.value;
+      this.marketService.createItem(item, imageUrl, price, availability, type, description, userId).subscribe({
         next: () => this.router.navigate(['/market']),
-        error: (err) => this.notification.setErrorMessage(err)
+        error: (err) => this.notification.setErrorMessage(err.message)
       })
     }
   }
