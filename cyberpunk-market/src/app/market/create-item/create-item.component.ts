@@ -27,7 +27,7 @@ export class CreateItemComponent {
       const { item, imageUrl, price, availability, type, description } = form.value;
       this.marketService.createItem(item, imageUrl, price, availability, type, description, userId).subscribe({
         next: () => this.router.navigate(['/market']),
-        error: (err) => this.notification.setErrorMessage(err.message)
+        error: (err) => this.notification.setErrorMessage(err.error)
       })
     }
   }
