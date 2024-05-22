@@ -2,6 +2,7 @@
     <div class="form form-item">
         <h2>Share Your item</h2>
         <form class="create-form" #form="ngForm" (ngSubmit)="handleCreate(form)">
+            
             <ng-container *ngIf="inputItem.touched">
                 <p *ngIf="inputItem.errors?.['required']" class="error">Item name is required!</p>
                 <p *ngIf="inputItem.errors?.['minlength']" class="error">Item name should be at least 3 characters long!
@@ -46,6 +47,7 @@
             <textarea id="description" name="description" placeholder="More About The Item" rows="10" cols="50" ngModel
                 #inputDescription="ngModel" required minlength="10" maxlength="200"></textarea>
             <button type="submit" [disabled]="form.invalid">Add</button>
+            
         </form>
     </div>
 </section>

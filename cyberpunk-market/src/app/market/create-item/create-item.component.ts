@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { MarketService } from '../market.service';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-item',
@@ -10,7 +11,11 @@ import { NotificationService } from 'src/app/shared/notification/notification.se
   styleUrls: ['./create-item.component.css']
 })
 export class CreateItemComponent {
-  constructor(private userService: UserService, private marketService: MarketService, private notification: NotificationService) { }
+  constructor(
+    private userService: UserService, 
+    private marketService: MarketService,
+    private router: Router, 
+    private notification: NotificationService) { }
 
   handleCreate(form: NgForm) {
     if (form.invalid) {
@@ -18,7 +23,12 @@ export class CreateItemComponent {
     }
 
     const userId = this.userService.user?._id || '';
-    console.log(userId);
-    
+    if (userId) {
+      const { email, imageUrl, price, availability, type, description } = form.value;
+      this.marketService.createItem(email, imageUrl, price, availability, type, description, userId).subscribe({
+        next: () => this.router.navigate(['/market']),
+        error: (err) => this.notification.setErrorMessage(err)
+      })
+    }
   }
 }
