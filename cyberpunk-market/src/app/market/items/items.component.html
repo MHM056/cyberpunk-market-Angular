@@ -4,19 +4,19 @@
 <ng-container *ngIf="!isLoading">
     <section *ngIf="items.length > 0" id="dashboard">
         <!-- Display a div with information about every post (if any)-->
-        <div class="item">
-            <img src="../../../assets/images/tablet.png" alt="example1" />
-            <h3 class="model">Synoptic Eye Tablet</h3>
-            <div class="item-info">
-                <p class="price">Price: €1000</p>
-                <p class="availability">
-                    Premium retailers, exclusive online stores
-                </p>
-                <p class="type">Type: Premium Tech</p>
+        <ng-container *ngFor="let item of items">
+            <div class="item">
+                <img src="{{item.imageUrl}}" alt="{{item.item}}" />
+                <h3 class="model">{{item.item}}</h3>
+                <div class="item-info">
+                    <p class="price">Price: €{{item.price}}</p>
+                    <p class="availability">{{item.availability}}</p>
+                    <p class="type">Type: {{item.type}}</p>
+                </div>
+                <a class="details-btn" routerLink="{{item._id}}">Uncover More</a>
             </div>
-            <a class="details-btn" href="#">Uncover More</a>
-        </div>
-       
+        </ng-container>
+
     </section>
     <!-- Display an h2 if there are no posts -->
     <h3 *ngIf="items.length == 0" class="empty">No Items Yet</h3>
