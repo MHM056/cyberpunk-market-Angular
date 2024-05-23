@@ -29,7 +29,6 @@ router.post('/login', async (req, res) => {
         const { user, token } = userData;
 
         res.cookie(TOKEN_KEY, token, cookieOptions);
-
         res.status(200).send(user);
     } catch (error) {
         res.status(400).send(error.message);
