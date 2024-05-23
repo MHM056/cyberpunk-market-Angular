@@ -39,3 +39,5 @@ exports.login = async (email, password) => {
 
     return { user: payload, token };
 }
+
+exports.getProfile = (userId) => User.findOne({ _id: userId }, { password: 0, __v: 0 });

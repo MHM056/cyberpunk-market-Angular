@@ -40,4 +40,15 @@ router.post('/logout', (req, res) => {
     res.status(204).send({ message: 'Logout successful!' });
 });
 
+router.get('/profile', async (req, res, next) => {
+    const { _id: userId } = req.user || '';
+    try {
+        const userData = await userService.getProfile(userId);
+        res.status(200).send(userData);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+});
+
 module.exports = router;
