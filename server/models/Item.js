@@ -5,7 +5,8 @@ const ItemSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Item name is required!'],
         minLength: [3, 'Item name should be at least 3 characters long!'],
-        maxLength: [30, 'Item name should be no longer than 30 characters!']
+        maxLength: [30, 'Item name should be no longer than 30 characters!'],
+        match: [/[a-zA-Z0-9]+/, 'Item name must contain latin letters and digits only!']
     },
     imageUrl: {
         type: String,
@@ -38,7 +39,8 @@ const ItemSchema = new mongoose.Schema({
     },
     userId: {
         type: mongoose.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     }
 }, { timestamps: { createdAt: 'created_at' } });
 
