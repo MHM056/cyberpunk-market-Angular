@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MarketModule } from './market/market.module';
+import { appInterceptorProvider } from './app-interceptor';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { MarketModule } from './market/market.module';
     MarketModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

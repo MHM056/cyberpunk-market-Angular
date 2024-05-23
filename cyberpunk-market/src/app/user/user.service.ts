@@ -30,13 +30,13 @@ export class UserService {
         email,
         password,
         repeatPassword
-      }, { withCredentials: true })
+      })
       .pipe(tap(user => this.user$$.next(user)));
   }
 
   login(email: string, password: string) {
     return this.http
-      .post<UserForAuth>(`${this.apiUrl}/users/login`, { email, password }, { withCredentials: true })
+      .post<UserForAuth>(`${this.apiUrl}/users/login`, { email, password })
       .pipe(tap((user) => this.user$$.next(user)));
   }
 
