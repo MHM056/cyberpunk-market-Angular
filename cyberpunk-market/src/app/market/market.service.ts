@@ -15,6 +15,10 @@ export class MarketService {
     return this.http.get<Item[]>(`${this.apiUrl}/market/items`);
   }
 
+  getItem(itemId: string) {
+    return this.http.get<Item>(`${this.apiUrl}/market/items/${itemId}/details`);
+  }
+
   createItem(item: string, imageUrl: string, price: number, availability: string, type: string, description: string, userId: string) {
     const itemData = { item, imageUrl, price, availability, type, description, userId };
     return this.http.post(`${this.apiUrl}/market/items`, itemData, { responseType: 'text' });
