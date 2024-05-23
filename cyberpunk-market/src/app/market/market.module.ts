@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CreateItemComponent } from './create-item/create-item.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 
 
@@ -13,6 +14,7 @@ import { CreateItemComponent } from './create-item/create-item.component';
   declarations: [
     ItemsComponent,
     CreateItemComponent,
+    ItemDetailsComponent,
   ],
   imports: [
     CommonModule,
