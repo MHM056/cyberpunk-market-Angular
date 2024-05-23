@@ -3,8 +3,8 @@ const { SECRET, TOKEN_KEY } = require('../constants');
 
 exports.auth = async (req, res, next) => {
     const token = req.cookies[TOKEN_KEY];
-
-    if(token) {
+    console.log(token);
+    if (token) {
         try {
             const decodedToken = await jwt.verify(token, SECRET);
             req.user = decodedToken;
@@ -21,7 +21,7 @@ exports.auth = async (req, res, next) => {
 }
 
 exports.isAuth = (req, res, next) => {
-    if(!req.user) {
+    if (!req.user) {
         res.status(401).send('Unauthorized!');
     }
 

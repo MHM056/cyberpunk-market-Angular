@@ -46,7 +46,6 @@ router.get('/profile', async (req, res, next) => {
         const userData = await userService.getProfile(userId);
         res.status(200).send(userData);
     } catch (error) {
-        console.log(error);
         next();
     }
 });
