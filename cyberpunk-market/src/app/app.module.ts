@@ -7,7 +7,6 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MarketModule } from './market/market.module';
 import { appInterceptorProvider } from './app-interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 
@@ -22,7 +21,6 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     CoreModule,
     SharedModule,
     HttpClientModule,
-    MarketModule,
     AppRoutingModule,
   ],
   providers: [appInterceptorProvider],
