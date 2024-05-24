@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MarketService } from '../market.service';
 import { Item } from 'src/app/types/item';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
 
 @Component({
   selector: 'app-item-details',
@@ -10,7 +11,13 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit {
-  constructor(private marketService: MarketService, private userService: UserService, private route: ActivatedRoute) {}
+  constructor(
+    private marketService: MarketService,
+    private userService: UserService,
+    private notification: NotificationService,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   item = {} as Item;
   itemId: string = '';
@@ -25,5 +32,16 @@ export class ItemDetailsComponent implements OnInit {
     this.marketService.getItem(this.itemId).subscribe(item => this.item = item);
   }
 
+  deleteHandler() {
+    if (this.userId === this.item.userId) {
+      const isConfirmed = confirm('Are you sure you want to delete this item');
+      if (isConfirmed) {
+        this.marketService.deleteItem(this.item._id).subscribe({
+          next: () => this.router.navigate(['/market']),
+          error: (err) => this.notification.setErrorMessage(err.message)
+        })
+      }
+    }
 
+  }
 }
