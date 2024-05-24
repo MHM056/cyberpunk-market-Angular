@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ItemDetailsComponent implements OnInit {
   constructor(private marketService: MarketService, private route: ActivatedRoute) {}
 
-  item: object = {} as Item;
+  item = {} as Item;
   itemId: string = '';
 
   ngOnInit(): void {
