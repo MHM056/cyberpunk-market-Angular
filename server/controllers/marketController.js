@@ -18,4 +18,14 @@ router.post('/items', isAuth, async (req, res) => {
     }
 });
 
+router.get('/items/:itemId/details', async (req, res) => {
+    const itemId = req.params.itemId;
+    try {
+        const itemData = await marketService.getOne(itemId);
+        res.status(200).send(itemData);
+    } catch (error) {
+        res.status(200).send(error.message);
+    }
+});
+
 module.exports = router;
