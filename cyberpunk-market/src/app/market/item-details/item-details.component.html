@@ -12,7 +12,7 @@
                 <p id="item-description">{{item.description}}</p>
             </div>
             <!--Edit and Delete are only for creator-->
-            <div id="action-buttons">
+            <div *ngIf="userId === item.userId" id="action-buttons">
                 <a routerLink="{{item._id}}/edit" id="edit-btn">Edit</a>
                 <a routerLink="{{item._id}}/delete" id="delete-btn">Delete</a>
             </div>
