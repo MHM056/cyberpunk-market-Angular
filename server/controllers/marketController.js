@@ -28,4 +28,14 @@ router.get('/items/:itemId/details', async (req, res) => {
     }
 });
 
+router.delete('/items/:itemId/delete', isAuth, async (req, res) => {
+    const itemId = req.params.itemId;
+    try {
+        await marketService.delete(itemId);
+        res.status(200).send({ status: 'success', message: 'Item successfully deleted!' })
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
 module.exports = router;
