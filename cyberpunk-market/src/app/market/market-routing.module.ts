@@ -5,23 +5,9 @@ import { CreateItemComponent } from './create-item/create-item.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 
 const routes: Routes = [
-  { path: 'market',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        component: ItemsComponent
-      },
-      {
-        path: 'sell',
-        component: CreateItemComponent
-      },
-      {
-        path: ':itemId/details',
-        component: ItemDetailsComponent
-      }
-    ]
-  }
+  { path: '', pathMatch: 'full', component: ItemsComponent },
+  { path: 'sell', component: CreateItemComponent },
+  { path: ':itemId/details', component: ItemDetailsComponent }
 ];
 
 @NgModule({
