@@ -24,6 +24,11 @@ export class MarketService {
     return this.http.post(`${this.apiUrl}/market/items`, itemData, { responseType: 'text' });
   }
 
+  editItem(itemId: string, item: string, imageUrl: string, price: number, availability: string, type: string, description: string, userId: string) {
+    const itemData = { item, imageUrl, price, availability, type, description, userId };
+    return this.http.put<Item>(`${this.apiUrl}/market/items/${itemId}`, itemData);
+  }
+
   deleteItem(itemId: string) {
     return this.http.delete(`${this.apiUrl}/market/items/${itemId}/delete`);
   }
