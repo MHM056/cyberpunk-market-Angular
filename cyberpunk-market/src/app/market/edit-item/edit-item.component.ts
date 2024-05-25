@@ -40,7 +40,7 @@ export class EditItemComponent implements OnInit {
     this.route.params.subscribe(params => this.itemId = params['itemId']);
     this.marketService.getItem(this.itemId).subscribe(item => {
       this.item = item;
-
+      
       if (this.item.userId !== this.userService.userId) {
         this.router.navigate(['/market']);
         return;
