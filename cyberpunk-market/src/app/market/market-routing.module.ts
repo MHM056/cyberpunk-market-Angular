@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: ItemsComponent },
   { path: 'sell', component: CreateItemComponent, canActivate: [AuthActivate] },
   { path: ':itemId/details', component: ItemDetailsComponent },
-  { path: ':itemId/edit', component: EditItemComponent, canActivate: [AuthActivate]}
+  { path: ':itemId/edit', component: EditItemComponent }
 ];
 
 @NgModule({
