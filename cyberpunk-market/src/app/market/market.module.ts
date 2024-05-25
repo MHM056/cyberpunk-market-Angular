@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CreateItemComponent } from './create-item/create-item.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { EditItemComponent } from './edit-item/edit-item.component';
 
 
 
@@ -15,6 +16,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     ItemsComponent,
     CreateItemComponent,
     ItemDetailsComponent,
+    EditItemComponent,
   ],
   imports: [
     CommonModule,

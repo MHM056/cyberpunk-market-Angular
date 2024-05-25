@@ -13,7 +13,7 @@
             </div>
             <!--Edit and Delete are only for creator-->
             <div *ngIf="userId === item.userId" id="action-buttons">
-                <a routerLink="{{item._id}}/edit" id="edit-btn">Edit</a>
+                <a routerLink="/market/{{item._id}}/edit" id="edit-btn">Edit</a>
                 <a (click)="deleteHandler()" id="delete-btn">Delete</a>
             </div>
         </div>
