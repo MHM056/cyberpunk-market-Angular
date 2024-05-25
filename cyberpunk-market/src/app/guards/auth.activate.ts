@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
 @Injectable({ providedIn: 'root' })
 
 export class AuthActivate implements CanActivate {
-    constructor(private userService: UserService, private router: Router) {}
-
+    constructor(private userService: UserService, private router: Router) { }
+  
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         if (this.userService.isUserLogged) {
             return true;
