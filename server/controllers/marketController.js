@@ -28,6 +28,17 @@ router.get('/items/:itemId/details', async (req, res) => {
     }
 });
 
+router.put('/items/:itemId', async (req, res) => {
+    const itemData = req.body;
+    const itemId = req.params.itemId;
+    try {
+        await marketService.edit(itemId, itemData);
+        res.status(200).send({ status: 'success', message: 'Item successfully edited!' })
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
 router.delete('/items/:itemId/delete', isAuth, async (req, res) => {
     const itemId = req.params.itemId;
     try {

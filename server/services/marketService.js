@@ -20,4 +20,6 @@ exports.create = async (itemData) => {
     return Item.create(itemData);
 }
 
+exports.edit = (itemId, itemData) => Item.findByIdAndUpdate(itemId, itemData, { runValidators: true });
+
 exports.delete = (itemId) => Item.findByIdAndDelete(itemId);
