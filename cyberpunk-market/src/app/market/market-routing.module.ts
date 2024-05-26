@@ -5,12 +5,13 @@ import { CreateItemComponent } from './create-item/create-item.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { AuthActivate } from '../guards/auth.activate';
 import { EditItemComponent } from './edit-item/edit-item.component';
+import { EditActivate } from '../guards/edit.activate';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: ItemsComponent },
   { path: 'sell', component: CreateItemComponent, canActivate: [AuthActivate] },
   { path: ':itemId/details', component: ItemDetailsComponent },
-  { path: ':itemId/edit', component: EditItemComponent }
+  { path: ':itemId/edit', component: EditItemComponent, canActivate: [EditActivate] }
 ];
 
 @NgModule({
