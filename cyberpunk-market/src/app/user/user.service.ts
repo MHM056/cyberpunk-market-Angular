@@ -16,7 +16,7 @@ export class UserService implements OnDestroy {
   }
 
   get userId(): string {
-    return this.user?._id;
+    return this.user?._id || '';
   }
 
   user: any | undefined;
