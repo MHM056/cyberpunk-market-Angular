@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { urlValidator } from 'src/app/shared/utils/url-validator';
 import { numberValidator } from 'src/app/shared/utils/number-validator';
 import { Item } from 'src/app/types/item';
-import { BehaviorSubject } from 'rxjs';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -40,11 +39,6 @@ export class EditItemComponent implements OnInit {
     this.route.params.subscribe(params => this.itemId = params['itemId']);
     this.marketService.getItem(this.itemId).subscribe(item => {
       this.item = item;
-      
-      if (this.item.userId !== this.userService.userId) {
-        this.router.navigate(['/market']);
-        return;
-      }
 
       this.form.setValue({
         item: this.item.item,
@@ -61,9 +55,14 @@ export class EditItemComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+ 
     const { item, imageUrl, price, availability, type, description } = this.form.value;
-    console.log(this.form.value);
-
+    this.marketService.editItem(this.itemId, item!, imageUrl!, Number(price)!, availability!, type!, description!)
+      .subscribe({
+        next: () => this.router.navigate([`/market/${this.itemId}/details`]),
+        error: (err) => {
+          this.notification.setErrorMessage(err.message);
+        }
+      });
   }
 }
