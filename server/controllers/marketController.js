@@ -12,7 +12,7 @@ router.post('/items', isAuth, async (req, res) => {
     const itemData = req.body;
     try {
         await marketService.create(itemData);
-        res.status(200).send('Successfully posted a new item!');
+        res.status(201).send({ status: 'success', message: 'Successfully posted a new item!' });
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -24,11 +24,11 @@ router.get('/items/:itemId/details', async (req, res) => {
         const itemData = await marketService.getOne(itemId);
         res.status(200).send(itemData);
     } catch (error) {
-        res.status(200).send(error.message);
+        res.status(400).send(error.message);
     }
 });
 
-router.put('/items/:itemId', async (req, res) => {
+router.put('/items/:itemId', isAuth, async (req, res) => {
     const itemData = req.body;
     const itemId = req.params.itemId;
     try {
