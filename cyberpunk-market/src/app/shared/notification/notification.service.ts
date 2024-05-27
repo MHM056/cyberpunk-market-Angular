@@ -8,8 +8,8 @@ export class NotificationService {
   public errorMessageSubject = new Subject<string>();
   errorMessageAction$ = this.errorMessageSubject.asObservable();
 
-  setErrorMessage(message: string): void {
-    this.errorMessageSubject.next(message);
+  setErrorMessage(error: any): void {
+    this.errorMessageSubject.next(error.error);
   }
 
   clearErrorMessage(): void {

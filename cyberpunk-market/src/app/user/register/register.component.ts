@@ -17,7 +17,6 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private notificationService: NotificationService
   ) { }
 
   form = this.fb.group({
@@ -32,28 +31,17 @@ export class RegisterComponent {
   });
 
   domains: string[] = EMAIL_DOMAINS;
-  isLoading: boolean = false;
 
   register() {
     if (this.form.invalid) {
       return;
     }
-    this.isLoading = true;
     const { email, passGroup: { password, repeatPassword } = {} } = this.form.value;
 
-    this.userService.register(email!, password!, repeatPassword!).subscribe(
-      () => {
-        this.userService.login(email!, password!).subscribe();
-        this.router.navigate(['/home'])
-      },
-      err => {
-        this.isLoading = false;
-        if (err.statusText === "Unknown Error") {
-          this.notificationService.setErrorMessage(`${err.statusText}, please try again later`);
-        } else {
-          this.notificationService.setErrorMessage(err.error)
-        }
-      }
+    this.userService.register(email!, password!, repeatPassword!).subscribe(() => {
+      this.userService.login(email!, password!).subscribe();
+      this.router.navigate(['/home'])
+    }
     );
   }
 }
