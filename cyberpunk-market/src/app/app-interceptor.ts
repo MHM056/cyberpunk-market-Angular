@@ -21,7 +21,6 @@ class AppInterceptor implements HttpInterceptor {
                     this.router.navigate(['/user/login']);
                 } else {
                     this.notification.setErrorMessage(err);
-                    // this.router.navigate(['/error']);
                 }
                 return [err];
             })
