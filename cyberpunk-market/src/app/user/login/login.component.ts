@@ -30,16 +30,12 @@ export class LoginComponent {
 
     const { email, password } = form.value;
     this.userService.login(email, password).subscribe({
-
       next: () => this.route.navigate(['/home']),
       error: (err) => {
-        console.log(err);
-        
         this.isLoading = false;
         if (err.statusText === "Unknown Error") {
           this.notificationService.setErrorMessage(`${err.statusText}, please try again later`)
         } else {
-
           this.notificationService.setErrorMessage(err.error);
         }
       }
