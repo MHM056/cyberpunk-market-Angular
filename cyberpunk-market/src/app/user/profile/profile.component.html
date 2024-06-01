@@ -1,0 +1,17 @@
+<section id="details">
+    <div id="details-wrapper">
+        <div>
+            <img id="details-img" src="/example" alt="example1" />
+            <p id="details-title">test</p>
+        </div>
+        <div id="info-wrapper">
+            <div id="details-description">
+                <p class="details-name">Name: test</p>
+            </div>
+            <!--Edit and Delete are only for creator-->
+            <div *ngIf="userId" id="action-buttons">
+                <a routerLink="/user/profile/edit" id="edit-btn">Edit</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,6 +9,7 @@
         <!-- Logged-in users -->
         <div *ngIf="isLogged" class="user">
             <a routerLink="/market/sell">Sell</a>
+            <a routerLink="/user/profile">Profile</a>
             <a routerLink="/user/logout" (click)="logout()">Logout</a>
         </div>
 
