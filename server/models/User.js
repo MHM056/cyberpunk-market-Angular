@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} must contain latin letters and digits only!`
         },
     },
+    imageUrl: {
+        type: String,
+        required: false,
+    },
     items: [{
         type: mongoose.Types.ObjectId,
         ref: "Item"

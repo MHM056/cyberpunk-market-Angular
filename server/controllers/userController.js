@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { TOKEN_KEY, cookieOptions } = require('../constants');
 const userService = require('../services/userService');
+const { isAuth } = require('../middlewares/authMiddleware');
 
 router.post('/register', async (req, res) => {
     const { email, password, repeatPassword } = req.body;
@@ -8,6 +9,7 @@ router.post('/register', async (req, res) => {
         email,
         password,
         repeatPassword,
+        imageUrl: '',
     }
 
     try {
@@ -40,7 +42,7 @@ router.post('/logout', (req, res) => {
     res.status(204).send({ message: 'Logout successful!' });
 });
 
-router.get('/profile', async (req, res, next) => {
+router.get('/profile', isAuth, async (req, res, next) => {
     const { _id: userId } = req.user || '';
     try {
         const userData = await userService.getProfile(userId);

@@ -61,6 +61,7 @@ span {
 
 #action-buttons a {
     text-decoration: none;
+    cursor: pointer;
     margin: auto 50px;
     margin-bottom: 10px;
     font-size: 26px;
