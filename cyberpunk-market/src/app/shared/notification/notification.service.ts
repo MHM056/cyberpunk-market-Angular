@@ -10,6 +10,9 @@ export class NotificationService {
 
   setErrorMessage(error: any): void {
     this.errorMessageSubject.next(error.error);
+    setInterval(() => {
+      this.clearErrorMessage();
+    }, 7000);
   }
 
   clearErrorMessage(): void {

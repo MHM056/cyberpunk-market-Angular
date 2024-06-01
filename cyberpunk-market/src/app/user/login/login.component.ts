@@ -17,7 +17,6 @@ export class LoginComponent {
   ) { }
 
   domains: string[] = EMAIL_DOMAINS;
-  isLoading: boolean = false;
 
   login(form: NgForm) {
     if (form.invalid) {
