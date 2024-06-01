@@ -12,7 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     CommonModule, SharedModule, FormsModule, UserRoutingModule, RouterModule, ReactiveFormsModule
