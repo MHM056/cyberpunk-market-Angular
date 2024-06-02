@@ -35,13 +35,16 @@ export class ProfileComponent implements OnInit {
   }
  
   edit(): void {
-
+      console.log(this.form.value);
+      
   }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe(data => {
       this.profileData = data;
+      console.log(this.profileData);
     });
+
 
   }
 }

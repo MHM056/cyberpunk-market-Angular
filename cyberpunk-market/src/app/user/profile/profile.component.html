@@ -18,14 +18,14 @@
 <section *ngIf="!isToggled" id="register">
     <div class="form">
         <h2>Profile</h2>
-        <form [formGroup]="form" (ngSubmit)="edit()" class="register-form">
+        <form [formGroup]="form" (ngSubmit)="edit()" class="profile-form">
 
             <ng-container *ngIf="form.get('imageUrl')?.touched">
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image is required!</p>
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['urlValidator']">Invalid URL!</p>
             </ng-container>
-            <input type="text" name="imageUrl" id="register-email" placeholder="imageUrl" required
-                formControlName="email" />
+            <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" required
+                formControlName="imageUrl" [value]="profileData.imageUrl" />
 
             <ng-container formGroupName="passGroup">
                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
@@ -45,7 +45,7 @@
                     formControlName="repeatPassword" />
             </ng-container>
 
-            <button type="submit" [disabled]="form.invalid">update</button>
+            <button type="submit">update</button>
             <button (click)="onToggle()">cancel</button>
         </form>
     </div>
