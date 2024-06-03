@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { urlValidator } from 'src/app/shared/utils/url-validator';
 import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-validator';
+import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,16 @@ import { matchPasswordsValidator } from 'src/app/shared/utils/match-passwords-va
 export class ProfileComponent implements OnInit {
   constructor(private userService: UserService, private fb: FormBuilder) { }
 
-  profileData: any = {};
+  profileData: User = {
+    _id: '',
+    email: '',
+    imageUrl: '',
+    password: '',
+    items: [],
+    created_at: '',
+    updatedAt: '',
+    __v: ''
+  };
   isToggled = true;
 
   form = this.fb.group({
@@ -45,6 +55,10 @@ export class ProfileComponent implements OnInit {
       console.log(this.profileData);
     });
 
+    this.form.setValue({
+      imageUrl: this.profileData.imageUrl,
+
+    })
 
   }
 }
