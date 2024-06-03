@@ -46,6 +46,7 @@ router.get('/profile', isAuth, async (req, res, next) => {
     const { _id: userId } = req.user || '';
     try {
         const userData = await userService.getProfile(userId);
+        console.log(userData);
         res.status(200).send(userData);
     } catch (error) {
         next();
