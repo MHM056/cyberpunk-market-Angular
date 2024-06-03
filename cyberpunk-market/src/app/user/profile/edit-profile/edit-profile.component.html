@@ -4,7 +4,6 @@
         <form [formGroup]="form" (ngSubmit)="edit()" class="profile-form">
 
             <ng-container *ngIf="form.get('imageUrl')?.touched">
-                <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image is required!</p>
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['urlValidator']">Invalid URL!</p>
             </ng-container>
             <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" required formControlName="imageUrl"
@@ -12,8 +11,6 @@
 
             <ng-container formGroupName="passGroup">
                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Password is
-                        required!</p>
                     <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">Password is
                         too short!</p>
                 </ng-container>

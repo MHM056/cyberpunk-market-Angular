@@ -34,7 +34,7 @@ ngOnInit(): void {
   });
 }
   form = this.fb.group({
-    imageUrl: ['', Validators.required, urlValidator()],
+    imageUrl: ['', [Validators.required, urlValidator()]],
     passGroup: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(4)]],
       repeatPassword: ['', [Validators.required]]
