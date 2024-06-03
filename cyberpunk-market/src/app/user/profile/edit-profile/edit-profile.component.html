@@ -6,7 +6,7 @@
             <ng-container *ngIf="form.get('imageUrl')?.touched">
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['urlValidator']">Invalid URL!</p>
             </ng-container>
-            <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" required formControlName="imageUrl"
+            <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" formControlName="imageUrl"
                 [value]="profileData.imageUrl" />
 
             <ng-container formGroupName="passGroup">
@@ -14,14 +14,14 @@
                     <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">Password is
                         too short!</p>
                 </ng-container>
-                <input type="password" name="password" id="register-password" placeholder="password" required
+                <input type="password" name="password" id="register-password" placeholder="password" 
                     minlength="4" formControlName="password" />
 
                 <ng-container *ngIf="form.get('passGroup')?.get('repeatPassword')?.touched">
                     <p class="error" *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']">Passwords are
                         not matching!</p>
                 </ng-container>
-                <input type="password" name="repeatPassword" id="repeat-password" placeholder="repeat password" required
+                <input type="password" name="repeatPassword" id="repeat-password" placeholder="repeat password"
                     formControlName="repeatPassword" />
             </ng-container>
 
