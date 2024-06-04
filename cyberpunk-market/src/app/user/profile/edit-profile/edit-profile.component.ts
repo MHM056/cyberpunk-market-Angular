@@ -35,7 +35,7 @@ ngOnInit(): void {
 }
   form = this.fb.group({
     imageUrl: ['', [urlValidator()]],
-    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
+    username: ['', [Validators.minLength(3), Validators.maxLength(12)]],
     passGroup: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(4)]],
       repeatPassword: ['', [Validators.required]]
@@ -50,6 +50,8 @@ ngOnInit(): void {
   }
   edit(): void {
     if (this.form.invalid) {
+      console.log('Error');
+      
       return;
     }
     

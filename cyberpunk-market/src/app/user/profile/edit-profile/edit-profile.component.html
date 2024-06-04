@@ -12,7 +12,7 @@
                 <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username must be between 3 and 12 characters!</p>
                 <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username must be no longer than 12 characters!</p>
             </ng-container>
-            <input type="text" name="username" id="username" placeholder="username" formControlName="username" required [value]="profileData.username" />
+            <input type="text" name="username" id="username" placeholder="username" formControlName="username" [value]="profileData.username" />
 
             <ng-container formGroupName="passGroup">
                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
