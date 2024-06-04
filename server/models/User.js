@@ -13,6 +13,14 @@ const userSchema = new mongoose.Schema({
             message: props => `${props.value} is invalid. Email must contain latin letters and digits only!`
         },
     },
+    username: {
+        type: String,
+        required: [true, 'Username is required!'],
+        unique: true,
+        minLength: [3, 'Username should be at least 3 characters long!'],
+        maxLength: [30, 'Username should be no longer than 12 characters!'],
+        match: [/[a-zA-Z0-9]+/, 'Username must contain latin letters and digits only!'],
+    },
     password: {
         type: String,
         required: [true, 'Password is required!'],

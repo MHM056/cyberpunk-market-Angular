@@ -34,7 +34,8 @@ ngOnInit(): void {
   });
 }
   form = this.fb.group({
-    imageUrl: ['', [Validators.required, urlValidator()]],
+    imageUrl: ['', [urlValidator()]],
+    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]],
     passGroup: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(4)]],
       repeatPassword: ['', [Validators.required]]
@@ -48,6 +49,13 @@ ngOnInit(): void {
     this.router.navigate(['/user/profile'])
   }
   edit(): void {
-    //
+    if (this.form.invalid) {
+      return;
+    }
+    
+    const { imageUrl, username } = this.form.value;
+    console.log(imageUrl);
+    console.log(username);
+    
   }
 }

@@ -28,10 +28,11 @@ export class UserService implements OnDestroy {
     this.userSubscription = this.user$.subscribe(user => this.user = user);
   }
 
-  register(email: string, password: string, repeatPassword: string) {
+  register(email: string, username: string, password: string, repeatPassword: string) {
     return this.http
       .post<UserForAuth>(`${this.apiUrl}/users/register`, {
         email,
+        username,
         password,
         repeatPassword
       })

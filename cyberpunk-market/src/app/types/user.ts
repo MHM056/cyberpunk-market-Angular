@@ -1,5 +1,6 @@
 export interface User {
     _id: string,
+    username: string,
     email: string,
     imageUrl: string,
     password: string,
@@ -11,6 +12,7 @@ export interface User {
 
 export interface UserForAuth {
     _id: string,
+    username: string,
     email: string,
     password: string
 }

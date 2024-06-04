@@ -20,6 +20,7 @@ export class RegisterComponent {
 
   form = this.fb.group({
     email: ['', [Validators.required, emailValidator(EMAIL_DOMAINS)]],
+    username: ['', [Validators.required, Validators.minLength(3)], Validators.maxLength(12)],
     passGroup: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(4)]],
       repeatPassword: ['', [Validators.required]]
@@ -35,9 +36,9 @@ export class RegisterComponent {
     if (this.form.invalid) {
       return;
     }
-    const { email, passGroup: { password, repeatPassword } = {} } = this.form.value;
+    const { email, username, passGroup: { password, repeatPassword } = {} } = this.form.value;
 
-    this.userService.register(email!, password!, repeatPassword!).subscribe(() => {
+    this.userService.register(email!, username!, password!, repeatPassword!).subscribe(() => {
       this.userService.login(email!, password!).subscribe();
       this.router.navigate(['/home'])
     }

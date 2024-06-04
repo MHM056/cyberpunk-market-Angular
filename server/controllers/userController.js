@@ -4,9 +4,10 @@ const userService = require('../services/userService');
 const { isAuth } = require('../middlewares/authMiddleware');
 
 router.post('/register', async (req, res) => {
-    const { email, password, repeatPassword } = req.body;
+    const { email, username, password, repeatPassword } = req.body;
     const userData = {
         email,
+        username,
         password,
         repeatPassword,
         imageUrl: '',
@@ -16,6 +17,7 @@ router.post('/register', async (req, res) => {
         const user = await userService.register(userData);
         res.status(200).send({
             email: user.email,
+            username: user.username,
             _id: user._id
         });
     } catch (error) {

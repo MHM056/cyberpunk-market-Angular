@@ -5,6 +5,11 @@ const { SECRET } = require('../constants');
 
 exports.register = async (userData) => {
     const user = await User.findOne({ email: userData.email });
+    const username = await User.findOne({ username: userData.username });
+
+    if (username){
+        throw new Error('Username is already in use!');
+    }
 
     if (user) {
         throw new Error('Email is already in use!');
