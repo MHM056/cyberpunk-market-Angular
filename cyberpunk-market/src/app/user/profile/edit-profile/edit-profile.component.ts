@@ -31,18 +31,26 @@ get userId(): string {
 ngOnInit(): void {
   this.userService.getProfile().subscribe(data => {
     this.profileData = data;
+    this.form.setValue({
+      imageUrl: this.profileData.imageUrl,
+      username: this.profileData.username,
+      // passGroup: {
+      //   password: '',
+      //   repeatPassword: ''
+      // }
+    })
   });
 }
   form = this.fb.group({
     imageUrl: ['', [urlValidator()]],
     username: ['', [Validators.minLength(3), Validators.maxLength(12)]],
-    passGroup: this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(4)]],
-      repeatPassword: ['', [Validators.required]]
-    },
-      {
-        validators: [matchPasswordsValidator('password', 'repeatPassword')]
-      }),
+    // passGroup: this.fb.group({
+    //   password: ['', [Validators.required, Validators.minLength(4)]],
+    //   repeatPassword: ['', [Validators.required]]
+    // },
+    //   {
+    //     validators: [matchPasswordsValidator('password', 'repeatPassword')]
+    //   }),
   }) 
 
   onCancel(): void {

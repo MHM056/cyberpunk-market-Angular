@@ -6,21 +6,25 @@
             <ng-container *ngIf="form.get('imageUrl')?.touched">
                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['urlValidator']">Invalid URL!</p>
             </ng-container>
-            <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" formControlName="imageUrl" [value]="profileData.imageUrl" />
+            <input type="text" name="imageUrl" id="imageUrl" placeholder="imageUrl" formControlName="imageUrl" />
 
             <ng-container *ngIf="form.get('username')?.touched">
-                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username must be between 3 and 12 characters!</p>
-                <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username must be no longer than 12 characters!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username must be between 3 and 12
+                    characters!</p>
+                <p class="error" *ngIf="form.get('username')?.errors?.['maxlength']">Username must be no longer than 12
+                    characters!</p>
             </ng-container>
-            <input type="text" name="username" id="username" placeholder="username" formControlName="username" [value]="profileData.username" />
+            <input type="text" name="username" id="username" placeholder="username" formControlName="username" />
 
-            <ng-container formGroupName="passGroup">
+            <!-- <ng-container formGroupName="passGroup">
                 <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
-                <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Password is required!</p>
+                    <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Password is
+                        required!</p>
                     <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">Password is
                         too short!</p>
                 </ng-container>
-                <input type="password" name="password" id="register-password" placeholder="password" minlength="4" required formControlName="password" />
+                <input type="password" name="password" id="register-password" placeholder="password" minlength="4"
+                    required formControlName="password" />
 
                 <ng-container *ngIf="form.get('passGroup')?.get('repeatPassword')?.touched">
                     <p class="error" *ngIf="form.get('passGroup')?.errors?.['matchPasswordsValidator']">Passwords are
@@ -28,7 +32,7 @@
                 </ng-container>
                 <input type="password" name="repeatPassword" id="repeat-password" placeholder="repeat password"
                     formControlName="repeatPassword" />
-            </ng-container>
+            </ng-container> -->
 
             <button type="submit">submit</button>
             <button (click)="onCancel()">cancel</button>
