@@ -46,3 +46,5 @@ exports.login = async (email, password) => {
 }
 
 exports.getProfile = (userId) => User.findOne({ _id: userId }, { password: 0, __v: 0 });
+
+exports.updateProfile = (userId, userData) => User.findByIdAndUpdate(userId, userData);
