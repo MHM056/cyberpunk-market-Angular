@@ -54,4 +54,14 @@ router.get('/profile', isAuth, async (req, res, next) => {
     }
 });
 
+router.post('/profile', isAuth, async (req, res, next) => {
+    const { _id: userId } = req.user || '';
+    const { imageUrl, username } = req.body;
+    try {
+        await userService.updateProfile(userId, { imageUrl, username });
+        res.status(200).send({ status: "success", message: "Successfully edited profile!" })
+    } catch (error) {
+        res.status(400).send({ status: "failed", message: 'Unable to update!' })
+    }
+});
 module.exports = router;
