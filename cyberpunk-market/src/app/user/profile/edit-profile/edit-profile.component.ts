@@ -12,35 +12,35 @@ import { UserService } from '../../user.service';
 })
 export class EditProfileComponent {
 
-constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
-}
-  
-profileData: any = {
-  _id: '',
-  email: '',
-  imageUrl: '',
-  items: [],
-  created_at: '',
-  updatedAt:''
-};
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+  }
 
-get userId(): string {
-  return this.userService.user?._id || '';
-}
+  profileData: any = {
+    _id: '',
+    email: '',
+    imageUrl: '',
+    items: [],
+    created_at: '',
+    updatedAt: ''
+  };
 
-ngOnInit(): void {
-  this.userService.getProfile().subscribe(data => {
-    this.profileData = data;
-    this.form.setValue({
-      imageUrl: this.profileData.imageUrl,
-      username: this.profileData.username,
-      // passGroup: {
-      //   password: '',
-      //   repeatPassword: ''
-      // }
-    })
-  });
-}
+  get userId(): string {
+    return this.userService.user?._id || '';
+  }
+
+  ngOnInit(): void {
+    this.userService.getProfile().subscribe(data => {
+      this.profileData = data;
+      this.form.setValue({
+        imageUrl: this.profileData.imageUrl,
+        username: this.profileData.username,
+        // passGroup: {
+        //   password: '',
+        //   repeatPassword: ''
+        // }
+      })
+    });
+  }
   form = this.fb.group({
     imageUrl: ['', [urlValidator()]],
     username: ['', [Validators.minLength(3), Validators.maxLength(12)]],
@@ -51,21 +51,20 @@ ngOnInit(): void {
     //   {
     //     validators: [matchPasswordsValidator('password', 'repeatPassword')]
     //   }),
-  }) 
+  })
 
   onCancel(): void {
     this.router.navigate(['/user/profile'])
   }
   edit(): void {
     if (this.form.invalid) {
-      console.log('Error');
-      
       return;
     }
-    
+
     const { imageUrl, username } = this.form.value;
-    console.log(imageUrl);
-    console.log(username);
-    
+    this.userService.updateProfile({ imageUrl, username })
+    .subscribe({
+      next: () => this.router.navigate(['/user/profile']),
+    })
   }
 }
