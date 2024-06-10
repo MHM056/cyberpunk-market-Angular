@@ -7,7 +7,7 @@ exports.register = async (userData) => {
     const user = await User.findOne({ email: userData.email });
     const username = await User.findOne({ username: userData.username });
 
-    if (username){
+    if (username) {
         throw new Error('Username is already in use!');
     }
 
@@ -47,4 +47,4 @@ exports.login = async (email, password) => {
 
 exports.getProfile = (userId) => User.findOne({ _id: userId }, { password: 0, __v: 0 });
 
-exports.updateProfile = (userId, userData) => User.findByIdAndUpdate(userId, userData);
+exports.updateProfile = async (userId, userData) => User.findByIdAndUpdate(userId, userData);
