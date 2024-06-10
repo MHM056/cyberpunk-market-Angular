@@ -65,6 +65,8 @@ export class EditProfileComponent {
     this.userService.updateProfile({ imageUrl, username })
     .subscribe({
       next: () => this.router.navigate(['/user/profile']),
+      error: (err) => console.log(err)
+      
     })
   }
 }
