@@ -54,7 +54,7 @@ router.get('/profile', isAuth, async (req, res, next) => {
     }
 });
 
-router.post('/profile', isAuth, async (req, res, next) => {
+router.put('/profile', isAuth, async (req, res, next) => {
     const { _id: userId } = req.user || '';
     const { imageUrl, username } = req.body;
     try {
